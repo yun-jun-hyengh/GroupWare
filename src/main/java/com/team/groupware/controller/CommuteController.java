@@ -18,6 +18,7 @@ public class CommuteController {
 	public String getToWork() {
 		Calendar c = Calendar.getInstance();
 		//int hour = c.get()
+		System.out.println("수정한다");
 		return "redirect:/main";
 	}
 
