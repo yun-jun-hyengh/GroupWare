@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.groupware.mapper.MessageMapper">
+	<insert id="sendMessage" parameterType="com.team.groupware.domain.MessageVO" useGeneratedKeys="true" keyProperty="msgnum">
+		<selectKey keyProperty="msgnum" resultType="int" order="BEFORE">
+			SELECT MESSAGE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MESSAGE(MSGNUM, SENDID, RECEIVEID, MSGTITLE, CONTENT)
+		VALUES(#{msgnum}, #{sendId}, #{receiveId}, #{msgtitle}, #{content})
+	</insert>
+	
+	<!-- 수신리스트 -->
+	<select id="selectMessagelist" resultType="com.team.groupware.domain.MessageVO" parameterType="String">
+		SELECT MSGNUM, MSGTITLE, SENDID, RECEIVEID, REGDATE
+		FROM MESSAGE WHERE RECEIVEID = #{receiveId} 
+		ORDER BY MSGNUM DESC
+	</select>
+	
+	<!-- 발신리스트 -->
+	<select id="receiveMessagelist" resultType="com.team.groupware.domain.MessageVO" parameterType="String">
+		SELECT MSGNUM, MSGTITLE, SENDID, RECEIVEID, REGDATE
+		FROM MESSAGE WHERE SENDID = #{sendId}
+		ORDER BY MSGNUM DESC
+	</select>
+	
+	<!-- 메세지 읽기 -->
+	<select id="read" resultType="com.team.groupware.domain.MessageVO">
+		SELECT MSGNUM, MSGTITLE, SENDID, RECEIVEID, CONTENT, REGDATE
+		FROM MESSAGE WHERE MSGNUM = #{msgnum}
+	</select>
+	
+	<!-- 메세지 파일 insert -->
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MESSAGE_FILE(
+			FILE_NO,
+			MSGNUM,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			SEQ_MESSAGE_FILE_NO.NEXTVAL,
+			#{MSGNUM},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+	</insert>
+	
+	<!-- 파일조회 -->
+	<select id="selectFilelist" parameterType="int" resultType="hashMap">
+		SELECT FILE_NO,
+			   ORG_FILE_NAME,
+			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
+			   DEL_GB
+		FROM MESSAGE_FILE
+		WHERE MSGNUM = #{msgnum}
+		AND DEL_GB = 'N'
+	</select>
+	
+	<!-- 파일 다운로드 -->
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT STORED_FILE_NAME,
+			   ORG_FILE_NAME
+		FROM MESSAGE_FILE
+		WHERE FILE_NO = #{FILE_NO}
+	</select>
+</mapper>

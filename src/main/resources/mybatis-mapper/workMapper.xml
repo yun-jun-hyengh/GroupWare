@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.groupware.mapper.WorkMapper">
+	<insert id="write">
+		INSERT INTO WORKER(BNO, BGNO, TITLE, WRITER, CONTENT, DEPT)
+		VALUES(WORKER_SEQ.NEXTVAL, #{bgno}, #{title}, #{writer}, #{content}, #{dept})
+	</insert>
+	
+	<select id="worklist" resultType="com.team.groupware.domain.WorkVO" parameterType="com.team.groupware.domain.SearchCriteria">
+		SELECT  BNO, 
+		        TITLE, 
+		        WRITER,
+		        DEPT, 
+		        REGDATE
+		 FROM ( 
+		        SELECT BNO, 
+		               TITLE, 
+		               WRITER, 
+		               DEPT, 
+		               REGDATE, 
+		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+		         FROM WORKER
+		         WHERE 1=1
+		         	<include refid="search"></include>
+		         	and BGNO=#{bgno}
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+	
+	<select id="listCount" resultType="int" parameterType="com.team.groupware.domain.SearchCriteria">
+		SELECT COUNT(BNO)
+		FROM WORKER
+		WHERE 1=1
+		<include refid="search"></include>
+		AND BNO > 0
+		AND BGNO = #{bgno}
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="read" resultType="com.team.groupware.domain.WorkVO">
+		SELECT BNO, TITLE, REGDATE, WRITER, CONTENT, DEPT
+		FROM WORKER WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+		DELETE FROM WORKER WHERE BNO = #{bno}
+	</delete>
+	
+	<!-- 수정 -->
+	<update id="update" parameterType="com.team.groupware.domain.WorkVO">
+		UPDATE WORKER
+		SET TITLE = #{title},
+			CONTENT = #{content},
+			DEPT = #{dept}
+		WHERE BNO = #{bno}
+	</update>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (WRITER LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.groupware.mapper.AdminMapper">
+	<!-- 사원등록 -->
+	<insert id="register">
+		INSERT INTO TBL_MEMBER(MEMBERID, PWD, NAME, EMAIL, PHONE, GENDER, DEPT, POSIT, POSTCODE, ROADADDRESS, JIBUNADDRESS, DETAILADDRESS)
+		VALUES(#{memberId}, #{pwd}, #{name}, #{email}, #{phone}, #{gender}, #{dept}, #{posit}, #{postcode}, #{roadAddress}, #{jibunAddress}, #{detailAddress})
+	</insert>
+	
+	<!-- 사원리스트 -->
+	<select id="list" resultType="com.team.groupware.domain.MemberVO">
+		SELECT MEMBERID, NAME, GENDER, DEPT, POSIT, REGISTERDATE, AUTHORITY
+		FROM TBL_MEMBER
+	</select>
+	
+	<!-- 회원삭제 -->
+	<delete id="delete">
+		DELETE FROM TBL_MEMBER WHERE MEMBERID = #{memberId}
+	</delete>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM TBL_MEMBER WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<!-- 회원조회 -->
+	<select id="read" resultType="com.team.groupware.domain.MemberVO">
+		SELECT MEMBERID, NAME, REGISTERDATE, DEPT, POSIT, AUTHORITY FROM TBL_MEMBER WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<!-- 회원권한관리 -->
+	<update id="update" parameterType="com.team.groupware.domain.MemberVO">
+		UPDATE TBL_MEMBER
+		SET DEPT = #{dept},
+			POSIT = #{posit},
+			AUTHORITY = #{authority}
+		WHERE MEMBERID = #{memberId}
+	</update>
+	
+</mapper>

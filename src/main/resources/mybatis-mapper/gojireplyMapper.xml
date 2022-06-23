@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.groupware.mapper.GojiReplyMapper">
+	<insert id="writeReply">
+		INSERT INTO GOJI_REPLY(BNO, RNO, RECONTENT, REPLYER)
+		VALUES (#{bno}, GOJI_REPLY_SEQ.NEXTVAL, #{recontent}, #{replyer})
+	</insert>
+	
+	<select id="readReply" resultType="com.team.groupware.domain.GojiReplyVO">
+		SELECT RNO, RECONTENT, REPLYER, REPLYDATE 
+		FROM GOJI_REPLY WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 댓글삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		DELETE GOJI_REPLY WHERE RNO = #{rno}
+	</delete>
+	
+	
+	
+</mapper>

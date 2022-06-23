@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.groupware.mapper.GojiMapper">
+	
+	<insert id="write" parameterType="com.team.groupware.domain.GojiBoard" useGeneratedKeys="true" keyProperty="bno">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT GOJIBOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO GOJIBOARD(BNO, TITLE, WRITER, CONTENT)
+		VALUES(#{bno}, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<select id="list" resultType="com.team.groupware.domain.GojiBoard" parameterType="com.team.groupware.domain.SearchCriteria">
+		SELECT  BNO, 
+		        TITLE, 
+		        WRITER,
+		        REGDATE, 
+		        CNT
+		 FROM ( 
+		        SELECT BNO, 
+		               TITLE, 
+		               WRITER, 
+		               REGDATE, 
+		               CNT, 
+		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+		         FROM GOJIBOARD
+		         WHERE 1=1
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+	
+	<select id="listCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(BNO) FROM GOJIBOARD WHERE BNO > 0
+		]]>
+	</select>
+	
+	<select id="read" resultType="com.team.groupware.domain.GojiBoard">
+		SELECT BNO, TITLE, REGDATE, WRITER, CNT, CONTENT
+		FROM GOJIBOARD WHERE BNO = #{bno} 
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM GOJIBOARD WHERE BNO = #{bno}
+	</delete>
+	
+	<update id="update" parameterType="com.team.groupware.domain.GojiBoard">
+		UPDATE GOJIBOARD 
+		SET TITLE = #{title}, 
+			CONTENT = #{content} 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="viewCount">
+		UPDATE GOJIBOARD
+		SET CNT = CNT + 1
+		WHERE BNO = #{bno}
+	</update>
+	
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MP_FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		) VALUES(
+			SEQ_MP_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+	</insert>
+	
+	<!-- 첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT FILE_NO,
+			   ORG_FILE_NAME,
+			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
+			   DEL_GB
+		FROM MP_FILE
+		WHERE BNO = #{bno}
+		AND DEL_GB = 'N'
+		ORDER BY FILE_NO ASC
+	</select>
+	
+	<!-- 파일수정 -->
+	<update id="updateFile" parameterType="hashMap">
+		UPDATE MP_FILE SET
+		DEL_GB = 'Y'
+		WHERE FILE_NO = #{FILE_NO}
+	</update>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (WRITER LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+	
+	<!-- 최신글 5개 -->
+	<select id="newlist" resultType="com.team.groupware.domain.GojiBoard">
+		<![CDATA[
+			SELECT * FROM GOJIBOARD WHERE ROWNUM <= 5 ORDER BY REGDATE DESC
+		]]>
+	</select>
+	
+</mapper>

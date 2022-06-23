@@ -1,0 +1,28 @@
+
+
+
+.profile{
+
+  background-color: #e7e7e7;
+
+  border: 1px solid rgb(82, 82, 82);
+  border-radius: 10px;
+  box-sizing: border-box;
+
+}
+.profile_img{
+  padding: 20px 0 0 50px;
+}
+.profile_button{
+  padding: 20px 0 0 0px;
+}
+.profile_name{
+  padding: 10px 0 0 10px ;
+}
+
+.profile_board{
+  padding-top: 10px ; border: 1px solid #000;  border-radius: 10px ; box-sizing: border-box;
+}
+.profile_freeboard{
+  padding-top: 10px ; border: 1px solid #000; border-radius: 10px ; box-sizing: border-box; margin-left: 50px;
+}
