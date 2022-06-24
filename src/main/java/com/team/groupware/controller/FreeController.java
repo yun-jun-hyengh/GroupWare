@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.team.groupware.domain.GojiBoard;
+import com.team.groupware.domain.FreeReplyVO;
+import com.team.groupware.domain.Freeboard;
+import com.team.groupware.domain.PageMaker;
 import com.team.groupware.domain.SearchCriteria;
-import com.team.groupware.service.GojiService;
+import com.team.groupware.service.FreeReService;
+import com.team.groupware.service.FreeService;
 
 @Controller
 public class FreeController {
@@ -43,14 +46,14 @@ public class FreeController {
 	// 글작성
 	@PostMapping("/free/writer")
 	public String postfreeboard(Freeboard vo, MultipartHttpServletRequest mpRequest) throws Exception {
-		service.write(vo, mpRequest);
+		service.write(vo, mpRequest);			
 		return "redirect:/free/freelist";
 	}
 	
 	// 공지사항 목록
 	@GetMapping("/free/freelist")
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-		model.addAttribute("list", service.list(scri));
+		model.addAttribute("freelist", service.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
@@ -62,21 +65,21 @@ public class FreeController {
 	// view
 	@GetMapping("/free/view")
 	public void getRead(@RequestParam("bno") int bno, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
-		GojiBoard vo = service.read(bno);
+		Freeboard vo = service.read(bno);
 		model.addAttribute("read", vo);
 		model.addAttribute("scri", scri);
 		service.viewCount(vo.getBno());
 		
 		List<FreeReplyVO> replyList = re_service.readReply(vo.getBno());
-		model.addAttribute("replyList", replyList);
+		model.addAttribute("freereplyList", replyList);
 		
 		List<Map<String, Object>> fileList = service.selectFileList(vo.getBno());
-		model.addAttribute("file", fileList);
+		model.addAttribute("freefile", fileList);
 	}
 	
 	// 글삭제 
 	@PostMapping("/free/delete")
-	public String delete(GojiBoard vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+	public String delete(Freeboard vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		service.delete(vo.getBno());
 		
 		rttr.addAttribute("page", scri.getPage());
@@ -93,13 +96,13 @@ public class FreeController {
 		model.addAttribute("scri", scri);
 		
 		List<Map<String, Object>> fileList = service.selectFileList(vo.getBno());
-		model.addAttribute("file", fileList);
+		model.addAttribute("freefile", fileList);
 		return "free/updateView";
 	}
 	
 	// 게시판 수정
 	@PostMapping("/free/update")
-	public String update(GojiBoard vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr,
+	public String update(Freeboard vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr,
 			@RequestParam(value="fileNoDel[]") String[] files,
 			@RequestParam(value="fileNameDel[]") String[] fileNames,
 			MultipartHttpServletRequest mpRequest) throws Exception {
