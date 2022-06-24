@@ -28,6 +28,7 @@
         }
     </style>
     
+    
         
 </head>
 <body>
@@ -64,12 +65,20 @@
                       <input type="text" readonly class="form-control-plaintext" id="posit" value="${member.posit}">
                     </div>
                   </div>
-                   <div class="row justify-content-around profile_button " style="padding-bottom: 20px">
-                   	<form> 
-	                    <input class="btn btn-outline-secondary col-4 " type="button" value="출근" id="goin" name="workTime" onclick="btnActive()">
-                    	<input class="btn btn-outline-secondary col-4 " type="button" name="endTime" id="leave" value="퇴근" onclick="btnActive2()">
-                  	</form>
-                  </div>
+                  <form action="/getToWork" method="POST">
+                   
+	                   <input type="hidden" name="memberId" id="memberId" value="${memeber.memberId}">
+	                   
+	                  <div class="col">
+	                       		<h5 > 출퇴근 관리</h5>
+	                          	출근
+	                           	<input class="form-control" type="text" name="workTime" id="workTime">
+	                       
+	                          	퇴근
+	                          	<input class="form-control" type="text" name="endTime" id="endTime">
+	                          	<input type="submit" value="상태저장">
+	                   		</div>
+	                  </form>
                   </c:if>
                 </div>
               </div>
@@ -135,20 +144,21 @@
             </div>
             <div class="row " style="margin-top: 20px;">
 
-              <div class="col-2">
+              <!--  <div class="col-2">
                 <div class="profile"  style="height: 300px">
                    <div class="col">
                        <h5 > 출퇴근 관리</h5>
-                       <form action="/getToWork" method="POST">
+                       
                           출근
-                           <input class="form-control" type="text" name="workTime" id="intime"readonly="readonly">
+                           <input class="form-control" type="text" name="workTime" id="intime" readonly="readonly">
                        
                           퇴근
                           <input class="form-control" type="text" name="endTime" readonly id="outtime">
-                   </form>
+                   	   </form> 
+                   	   
                    </div>
                 </div>
-              </div>
+              </div> -->
 
    			  <div class="col profile_freeboard ">
 
@@ -320,19 +330,21 @@
             leave.disabled = true;
             goin.disabled = false;
          
-         var s =new Date(); //현재 시간
-         var e= document.getElementById('outtime');
-         e.value=s.toLocaleTimeString();
+         	var s =new Date(); //현재 시간
+         	var e= document.getElementById('outtime');
+         	e.value=s.toLocaleTimeString();
             
          }
+         
        }
        </script>
-    
+       
 	
     <script
       src="https://getbootstrap.kr/docs/5.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    
 </body>
 </html>
