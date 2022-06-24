@@ -8,6 +8,8 @@ public class CommuteVO {
 	private String workTime; // 출근시간
 	private String endTime; // 퇴근시간
 	private Date regdate; // 날짜 
+	
+	
 	public int getWorkId() {
 		return workId;
 	}

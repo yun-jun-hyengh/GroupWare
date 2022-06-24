@@ -17,5 +17,14 @@ public class CommuteServiceImpl implements CommuteService {
 		mapper.startinsert(vo);
 	}
 	
+	@Override
+	public CommuteVO read(int workId) throws Exception {
+		return mapper.read(workId);
+	}
+
+	@Override
+	public void endtime(CommuteVO vo) throws Exception {
+		mapper.endtime(vo);
+	}
 
 }

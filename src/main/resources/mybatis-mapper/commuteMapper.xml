@@ -2,8 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.groupware.mapper.CommuteMapper">
+	<!-- 출근 -->
 	<insert id="startinsert">
-		INSERT INTO(WORKID, MEMBERID, WORKTIME, ENDTIME)
-		VALUES(COMMUTE_SEQ.NEXTVAL, #{memberId}, #{workTime}, #{endTime})
+		INSERT INTO COMMUTE(WORKID, MEMBERID, WORKTIME, ENDTIME)
+		VALUES(COMMUTE_SEQ.NEXTVAL, #{memberId}, TO_CHAR(SYSDATE,'HH24:MI:SS'), TO_CHAR(SYSDATE,'HH24:MI:SS'))
 	</insert>
+	
+	<!-- 출퇴근 유무 -->
+	<select id="read" parameterType="int" resultType="com.team.groupware.domain.CommuteVO">
+		SELECT WORKID, WORKTIME, ENDTIME FROM COMMUTE WHERE WORKID = #{workId}
+	</select>
+	
+	<!-- 퇴근 -->
+	<update id="endtime" parameterType="com.team.groupware.domain.CommuteVO">
+		UPDATE COMMUTE SET ENDTIME = TO_CHAR(SYSDATE, 'HH24:MI:SS')
+		WHERE WORKID = #{workId} 
+	</update>
 </mapper>
