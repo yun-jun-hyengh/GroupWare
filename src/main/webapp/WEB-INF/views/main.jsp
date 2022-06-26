@@ -65,20 +65,22 @@
                       <input type="text" readonly class="form-control-plaintext" id="posit" value="${member.posit}">
                     </div>
                   </div>
-                  <form action="/getToWork" method="POST">
+                  
                    
-	                   <input type="hidden" name="memberId" id="memberId" value="${memeber.memberId}">
-	                   
 	                  <div class="col">
+	                  	<form action="/getToWork" method="POST">
+	                  			<input type="hidden" name="memberId" id="memberId" value="${member.memberId}" >
+	                  			<input type="hidden" name="name" id="name" value="${member.name}" >
 	                       		<h5 > 출퇴근 관리</h5>
 	                          	출근
-	                           	<input class="form-control" type="text" name="workTime" id="workTime">
+	                           	<input class="form-control" type="time" name="workTime" id="workTime">
 	                       
 	                          	퇴근
-	                          	<input class="form-control" type="text" name="endTime" id="endTime">
+	                          	<input class="form-control" type="time" name="endTime" id="endTime">
 	                          	<input type="submit" value="상태저장">
-	                   		</div>
-	                  </form>
+	                          	</form>
+	                   	</div>
+	                  
                   </c:if>
                 </div>
               </div>

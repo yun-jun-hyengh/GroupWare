@@ -8,7 +8,7 @@ public class CommuteVO {
 	private String workTime; // 출근시간
 	private String endTime; // 퇴근시간
 	private Date regdate; // 날짜 
-	
+	private String name;
 	
 	public int getWorkId() {
 		return workId;
@@ -39,6 +39,12 @@ public class CommuteVO {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

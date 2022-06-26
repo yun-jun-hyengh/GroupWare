@@ -114,7 +114,7 @@
                   	<li><a href="/admin/home" class="link-dark rounded">관리자페이지</a></li>
                     <li><a href="/admin/join" class="link-dark rounded">사원등록</a></li>
                     <li><a href="/admin/role" class="link-dark rounded">직원권한관리</a></li>
-                    <li><a href="#" class="link-dark rounded">사원근태관리</a></li>
+                    <li><a href="/admin/admin_commute" class="link-dark rounded">사원근태관리</a></li>
                     <li><a href="#" class="link-dark rounded">결제라인</a></li>
                   </ul>
                 </div>

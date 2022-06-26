@@ -4,9 +4,13 @@
 <mapper namespace="com.team.groupware.mapper.CommuteMapper">
 	<!-- 출퇴근 -->
 	<insert id="startinsert">
-		INSERT INTO COMMUTE(WORKID, MEMBERID, WORKTIME, ENDTIME)
-		VALUES(COMMUTE_SEQ.NEXTVAL, #{memberId}, #{workTime}, #{endTime})
+		INSERT INTO COMMUTE(WORKID, MEMBERID, WORKTIME, ENDTIME, NAME)
+		VALUES(COMMUTE_SEQ.NEXTVAL, #{memberId}, #{workTime}, #{endTime}, #{name})
 	</insert>
 	
-	
+	<!-- 관리자 사원 출퇴근 관리 -->
+	<select id="staffcommute" resultType="com.team.groupware.domain.CommuteVO">
+		SELECT MEMBERID, NAME, WORKTIME, ENDTIME, REGDATE
+		FROM COMMUTE ORDER BY WORKID DESC
+	</select>
 </mapper>
