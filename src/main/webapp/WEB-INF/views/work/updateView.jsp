@@ -30,28 +30,28 @@ crossorigin="anonymous"
 					<div class="row ms-sm-auto">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<h2 class="text-center">게시글 쓰기</h2>
+							<h2 class="text-center breack">게시글 쓰기</h2>
 							<%-- 업데이트 --%>
                         <table class="table table-striped">
                         	
                            <tr>
-                              <td>제목</td>
+                              <td class="align-middle text-center">제목</td>
                               <td><input type="text"  class="form-control" name="title" value="${update.title}"></td>
                            </tr>
                            <tr>
-                              <td>보고자</td>
+                              <td class="align-middle text-center">보고자</td>
                               <td><input type="text"  class="form-control" name="writer" value="${update.writer}" readonly="readonly"></td>
                            </tr>  
                            <tr>
-                              <td>부서</td>
+                              <td class="align-middle text-center">부서</td>
                               <td><input type="text"  class="form-control" name="dept" value="${update.dept}"></td>
                            </tr>                 
                            <tr>
-                              <td>글내용</td>
+                              <td class="align-middle text-center">글내용</td>
                               <td><textarea rows="10" cols="50" name="content" class="form-control"><c:out value="${update.content}"/></textarea></td>
                            </tr>
                            <tr>
-                              <td>파일업로드</td>
+                              <td class="align-middle text-center">파일업로드</td>
                               <td><input type="file" class="form-control" name="file"></td>
                            </tr>
                            <tr>

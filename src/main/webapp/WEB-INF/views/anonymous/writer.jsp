@@ -24,20 +24,20 @@ crossorigin="anonymous"
 					<div class="row ms-sm-auto">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<h2 class="text-center">익명 게시글 쓰기</h2>
+							<h2 class="text-center breack">익명 게시글 쓰기</h2>
 							
 								<table class="table table-striped">
 									<tr>
-										<td>제목</td>
+										<td class="align-middle text-center">제목</td>
 										<td><input type="text"  class="form-control" name="title"></td>
 									</tr>
 							                
 									<tr>
-										<td>글내용</td>
+										<td class="align-middle text-center">글내용</td>
 										<td><textarea rows="10" cols="50" name="content" class="form-control"></textarea></td>
 									</tr>
 									<tr>
-										<td>파일업로드</td>
+										<td class="align-middle text-center">파일업로드</td>
 										<!--  <td><input type="file" class="form-control" name="file" multiple="multiple"></td> -->
 										<td><button class="fileAdd_btn" type="button" onclick="fn_addFile()">파일추가</button></td>
 									</tr>

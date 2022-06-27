@@ -22,7 +22,7 @@
 			<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
 
-			<main class="col-md-10 ms-sm-auto row">
+			<main class="col-md-10 ms-sm-auto row ">
 				<form class="col d-block" role="form" method="post" name="readForm"
 					autocomplete="off">
 					<input type="hidden" id="msgnum" name="msgnum" value="${read.msgnum}">
@@ -30,7 +30,7 @@
 				</form>
 				<div class="row ">
 
-					<div class="col-md-12  ">
+					<div class="col-md-12  breack">
 						<table class="table table-condensed">
 							<thead>
 								<tr>

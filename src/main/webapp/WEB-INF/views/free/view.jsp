@@ -40,7 +40,7 @@ crossorigin="anonymous"
                 </form>
                 	<div class="row ">
                    		
-	                    <div class="col-md-12  ">
+	                    <div class="col-md-12 breack ">
 	                        <table class="table table-condensed">
 	                            <thead>
 	                                <tr >

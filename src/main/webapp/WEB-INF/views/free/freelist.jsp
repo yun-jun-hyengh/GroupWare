@@ -24,7 +24,7 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto">
-          <h2>자유게시판</h2>
+          <h2 class="breack">자유게시판</h2>
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">

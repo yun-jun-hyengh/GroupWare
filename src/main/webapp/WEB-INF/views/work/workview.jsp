@@ -36,19 +36,19 @@ crossorigin="anonymous"
             </form>
             <div class="container-fluid">
                 <table class="table">
-                    <td class="align-middle"><h2 class="text-center ">보고서</h2></td>
+                    <td class="align-middle"><h2 class="text-center breack">보고서</h2></td>
                     
                 </table>
                 <table class="table table-bordered border-dark">
                     <thead></thead>
                     <tr>
-                        <td class="table-active">작성자명</td>
+                        <td class="table-active align-middle text-center">작성자명</td>
                         <td><input class="form-control" type="text" name="writer" id="writer" value="${read.writer}" readonly="readonly"></td>
-                        <td class="table-active">작성일자</td>
+                        <td class="table-active align-middle text-center">작성일자</td>
                         <td><input class="form-control" type="text" name="regdate" id="regdate" value="<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd"/>" readonly="readonly"></td>
                     </tr>
                     <tr>
-                    	<td class="table-active">보고종류</td>
+                    	<td class="table-active align-middle text-center">보고종류</td>
                     	<td>
                     		<c:if test="${scri.bgno == 1}">
                     			<input class="form-control" type="text" name="writer" id="writer" value="일일보고" readonly="readonly">
@@ -64,24 +64,24 @@ crossorigin="anonymous"
                     		</c:if>
                     		
                     	</td>
-                        <td class="table-active">부서명</td>
+                        <td class="table-active align-middle text-center">부서명</td>
                         <td><input class="form-control" type="text" name="dept" id="dept" value="${read.dept}" readonly="readonly"></td>
                     </tr>
                 </table>
                 <table class="table table-bordered border-dark">
                     <thead></thead>
                     <tr>
-                        <td class="table-active col-1">제목</td>
+                        <td class="table-active align-middle text-center col-1">제목</td>
                         <td><input class="form-control" type="text" name="title" id="title" value="${read.title}" readonly="readonly"></td>
                         
                     </tr>
                     <tr>
-                        <td class="table-active" style="height: 150px;">내용</td>
+                        <td class="table-active align-middle text-center" style="height: 150px;">내용</td>
                         <td><textarea class="form-control" readonly="readonly" name="content" id="content" cols="30" rows="10">${read.content}</textarea></td>
                        
                     </tr>
                     <tr>
-                        <td class="table-active">첨부파일</td>
+                        <td class="table-active align-middle text-center">첨부파일</td>
                         <td><input class="form-control" type="file" name="" id=""></td>
                        
                     </tr>

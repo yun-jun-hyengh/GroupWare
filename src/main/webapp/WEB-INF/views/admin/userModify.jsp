@@ -20,7 +20,7 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto">
-        	<h2 style="margin-top: 20px;">임직원권한수정</h2>
+        	<h2 class="breack">임직원권한수정</h2>
         	<form name="updateForm" role="form" method="post" action="/admin/update">
 	        	<input type="hidden" name="memberId" value="${vo.memberId}" readonly="readonly">
 	        	<div class="table-responsive">

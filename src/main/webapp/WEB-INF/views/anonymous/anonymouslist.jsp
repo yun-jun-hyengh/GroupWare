@@ -24,11 +24,11 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto">
-          <h2>익명게시판</h2>
+          <h2 class="breack">익명게시판</h2>
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">
-          	<a type="button" href="/anonymous/writer">글작성</a>
+          	<a type="button" href="/anonymous/writer" class="btn  btn-outline-primary">글작성</a>
           </span>
             <table class="table table-striped table-sm">
               <thead>

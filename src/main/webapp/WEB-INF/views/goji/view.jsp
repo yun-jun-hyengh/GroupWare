@@ -24,7 +24,7 @@ crossorigin="anonymous"
         	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
         	
         	
-        	<main class="col-md-10 ms-sm-auto row">
+        	<main class="col-md-10 ms-sm-auto row ">
         	  	<form class="col d-block" role="form" method="post" autocomplete="off">
                 	<input type="hidden" id="bno" name="bno" value="${read.bno}">
 					<input type="hidden" id="page" name="page" value="${scri.page}">
@@ -40,7 +40,7 @@ crossorigin="anonymous"
                 </form>
                 	<div class="row ">
                    		
-	                    <div class="col-md-12  ">
+	                    <div class="col-md-12  breack">
 	                        <table class="table table-condensed">
 	                            <thead>
 	                                <tr >

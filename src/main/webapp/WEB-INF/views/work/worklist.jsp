@@ -23,7 +23,7 @@
     <div class="container-fluid">
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
-        <main class="col-md-10 ms-sm-auto">
+        <main class="col-md-10 ms-sm-auto breack">
            <!--  <h2 class="breack">월별보고</h2> -->
            <c:choose>
            	<c:when test="${scri.bgno == 1}">
@@ -43,7 +43,7 @@
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">
-          	<a type="button" href="/work/write">업무보고</a>
+          	<a type="button" href="/work/write" class="btn  btn-outline-primary">업무보고</a>
           </span>
           
             <table class="table table-striped table-sm">
@@ -60,11 +60,11 @@
               <c:forEach items="${list}" var="list">
               <tbody>
                 <tr>
-                  <td>${list.bno}</td>
-                  <td><a href="/work/workview?bno=${list.bno}&bgno=${scri.bgno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
-                  <td>${list.writer}</td>
-                  <td>${list.dept}</td>
-                  <td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
+                  <td class="col-1">${list.bno}</td>
+                  <td class="col-5"><a href="/work/workview?bno=${list.bno}&bgno=${scri.bgno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
+                  <td class="col-1">${list.writer}</td>
+                  <td class="col-1">${list.dept}</td>
+                  <td class="col-1"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
                 </tr>
               </tbody>
               

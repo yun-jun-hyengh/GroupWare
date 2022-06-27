@@ -9,7 +9,7 @@
       class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
     >
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main"
-        >Company name</a
+        >점프하는 껍데기</a
       >
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"

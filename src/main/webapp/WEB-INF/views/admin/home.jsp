@@ -46,14 +46,14 @@
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
-                  <th><input id="allCheck" type="checkbox" name="allCheck"/></th>
-                  <th>아이디</th>
-                  <th>사원이름</th>
-                  <th>성별</th>
-                  <th>부서</th>
-                  <th>직책</th>
-                  <th>입사일</th>
-                  <th>권한</th>
+                  <th class="col-1"><input id="allCheck" type="checkbox" name="allCheck"/></th>
+                  <th class="col-2">아이디</th>
+                  <th class="col-2">사원이름</th>
+                  <th class="col-1">성별</th>
+                  <th class="col-1">부서</th>
+                  <th class="col-1">직책</th>
+                  <th class="col-2">입사일</th>
+                  <th class="col-1">권한</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,7 +77,7 @@
     </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
+        <li class="page-item ">
           <a class="page-link">Previous</a>
         </li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>

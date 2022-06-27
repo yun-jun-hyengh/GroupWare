@@ -25,7 +25,7 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto">
-          <h2 style="margin-top: 20px;">임직원근태관리</h2>
+          <h2 class="breack">임직원근태관리</h2>
           <form method="post" id="checkForm" action="/admin/excelDown">
           <div class="table-responsive">
             <table class="table table-striped table-sm">
@@ -41,11 +41,11 @@
               <tbody>
               <c:forEach items="${list}" var="list">
               <tr>
-              	  <td>${list.memberId}</td>
-              	  <td>${list.name}</td>
-              	  <td>${list.workTime}</td>
-              	  <td>${list.endTime}</td>
-              	  <td>${list.regdate}</td>
+              	  <td class="col-1">${list.memberId}</td>
+              	  <td class="col-1">${list.name}</td>
+              	  <td class="col-1">${list.workTime}</td>
+              	  <td class="col-1">${list.endTime}</td>
+              	  <td class="col-2">${list.regdate}</td>
               </tr>
               </c:forEach>
               </tbody>
@@ -65,7 +65,7 @@
     </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
+        <li class="page-item ">
           <a class="page-link">Previous</a>
         </li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>

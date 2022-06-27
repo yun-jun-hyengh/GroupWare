@@ -24,27 +24,27 @@ crossorigin="anonymous"
 					<div class="row ms-sm-auto">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<h2 class="text-center">쪽지쓰기</h2>
+							<h2 class="text-center breack">쪽지쓰기</h2>
 							
 								<table class="table table-striped">
 									<tr>
-										<td>제목</td>
+										<td class="align-middle text-center">제목</td>
 										<td><input type="text"  class="form-control" name="msgtitle"></td>
 									</tr>
 									<tr>
-										<td>발신자</td>
+										<td class="align-middle text-center">발신자</td>
 										<td><input type="text"  class="form-control" name="sendId" value="${member.memberId}"></td>
 									</tr>
 									<tr>
-										<td>수신자</td>
+										<td class="align-middle text-center">수신자</td>
 										<td><input type="text"  class="form-control" name="receiveId"></td>
 									</tr>                    
 									<tr>
-										<td>내용</td>
+										<td class="align-middle text-center">내용</td>
 										<td><textarea rows="10" cols="50" name="content" class="form-control"></textarea></td>
 									</tr>
 									<tr>
-										<td>파일업로드</td>
+										<td class="align-middle text-center">파일업로드</td>
 										<td><button class="fileAdd_btn" type="button" onclick="fn_addFile()">파일추가</button></td>
 										<!--  <td><input type="file" class="form-control" name="file"></td> -->
 										<td>

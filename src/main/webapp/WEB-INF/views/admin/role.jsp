@@ -25,12 +25,12 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto">
-          <h2 style="margin-top: 20px;">임직원권한관리</h2>
+          <h2 class="breack">임직원권한관리</h2>
           <form method="post" id="checkForm">
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
-                <tr>
+                <tr class="align-middle text-center">
                   <th>아이디</th>
                   <th>사원이름</th>
                   <th>성별</th>
@@ -41,7 +41,7 @@
                   <th>권한부여</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="align-middle text-center">
               <c:forEach items="${list}" var="list">
                   <td><c:out value="${list.memberId}"/></td>
                   <td><c:out value="${list.name}"/></td>
@@ -51,7 +51,7 @@
                   <td><fmt:formatDate value="${list.registerdate}" pattern="yyyy-MM-dd"/></td>
                   <td id="authority"><c:out value="${list.authority}"/></td>
 				  <td>
-				  	<a type="button" href="/admin/userModify?memberId=${list.memberId}" class="delet btn btn-secondary" style="margin-bottom: 10px ; border-radius: 100px">수정</a>
+				  	<a type="button" href="/admin/userModify?memberId=${list.memberId}" class="delet btn btn-secondary" style="margin: 10px ; border-radius: 100px">수정</a>
 				  </td>
                 </tr>
                </c:forEach>
