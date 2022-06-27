@@ -43,11 +43,11 @@
               <tbody>
               	<c:forEach var="list" items="${anonymouslist}">
                 <tr>
-                  <td>${list.bno}</td>
-                  <td><a href="/anonymous/view?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
-                  <td>익명</td>
-                  <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.regdate}"/></td>
-                  <td>${list.cnt}</td>
+                  <td class="col-1">${list.bno}</td>
+                  <td class="col-5"><a href="/anonymous/view?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
+                  <td class="col-1">익명</td>
+                  <td class="col-2"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.regdate}"/></td>
+                  <td class="col-1">${list.cnt}</td>
                 </tr>
                 </c:forEach>
               </tbody>

@@ -28,7 +28,7 @@
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">
-          	<a type="button" href="/goji/writer">글작성</a>
+          	<a type="button" href="/goji/writer" class="btn  btn-outline-primary">글작성</a>
           </span>
             <table class="table table-striped table-sm">
               <thead>
@@ -40,14 +40,14 @@
                   <th>조회수</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
               	<c:forEach var="list" items="${list}">
                 <tr>
-                  <td>${list.bno}</td>
-                  <td><a href="/goji/view?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
-                  <td>${list.writer}</td>
-                  <td>${list.regdate}</td>
-                  <td>${list.cnt}</td>
+                  <td class="col-1">${list.bno}</td>
+                  <td class="col-5"><a href="/goji/view?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
+                  <td class="col-1">${list.writer}</td>
+                  <td class="col-2">${list.regdate}</td>
+                  <td class="col-1">${list.cnt}</td>
                 </tr>
                 </c:forEach>
               </tbody>

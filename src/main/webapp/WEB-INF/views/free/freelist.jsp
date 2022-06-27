@@ -28,7 +28,7 @@
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">
-          	<a type="button" href="/free/writer">글작성</a>
+          	<a type="button" href="/free/writer" class="btn  btn-outline-primary">글작성</a>
           </span>
             <table class="table table-striped table-sm">
               <thead>
@@ -43,11 +43,11 @@
               <tbody>
               	<c:forEach var="freelist" items="${freelist}">
                 <tr>
-                  <td>${freelist.bno}</td>
-                  <td><a href="/free/view?bno=${freelist.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${freelist.title}</a></td>
-                  <td>${freelist.writer}</td>
-                  <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${freelist.regdate}"/></td>
-                  <td>${freelist.cnt}</td>
+                  <td class="col-1">${freelist.bno}</td>
+                  <td class="col-5"><a href="/free/view?bno=${freelist.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${freelist.title}</a></td>
+                  <td class="col-1">${freelist.writer}</td>
+                  <td class="col-2"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${freelist.regdate}"/></td>
+                  <td class="col-1">${freelist.cnt}</td>
                 </tr>
                 </c:forEach>
               </tbody>
