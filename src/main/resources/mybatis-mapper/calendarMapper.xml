@@ -6,5 +6,8 @@
 		INSERT INTO CALENDAR(CALNUM, TITLE, CONTENT, CALSTART, CALEND)
 		VALUES (CALNUM_SEQ.NEXTVAL, #{title}, #{content}, #{calstart}, #{calend})
 	</insert>
-
+	
+	<select id="calendarList" resultType="com.team.groupware.domain.CalendarVO">
+		SELECT * FROM CALENDAR
+	</select>
 </mapper>

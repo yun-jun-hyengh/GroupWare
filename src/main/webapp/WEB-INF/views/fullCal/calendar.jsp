@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.team.groupware.domain.CalendarVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +42,50 @@
 			</main>
 		</div>
 	</div>
-	<script src="../resources/js/fullCal/fullCalendar.js"></script>       
+	<!--  <script src="../resources/js/fullCal/fullCalendar.js"></script>     -->   
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script type="text/javascript">
+/**
+ * 
+ */
+ 
+ 
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+	var calendarEl = document.getElementById('calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+		initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+		height: '600px',
+		headerToolbar : { // 헤더에 표시할 툴 바
+			start : 'prev next today',
+			center : 'title',
+			end : 'dayGridMonth,dayGridWeek,dayGridDay'
+		},
+		titleFormat : function(date) {
+			return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+		},
+		
+		selectable : true, // 달력 일자 드래그 설정가능 
+		droppable : true,
+		editable : true,
+		nowIndicator: true, // 현재 시간 마크
+		locale: 'ko', // 한국어 설정
+		events : [
+				<%List<CalendarVO> calendarList = (List<CalendarVO>) request.getAttribute("calendarList");%>
+				<%if (calendarList != null) {%>
+				<%for (CalendarVO vo : calendarList) {%>
+				{
+					title : '<%=vo.getTitle()%>',
+					start : '<%=vo.getCalstart()%>',
+					end : '<%=vo.getCalend()%>',
+					color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+				},
+			<%}
+		}%>
+			]
+	});
+	calendar.render();
+});
+</script>
 </html>
