@@ -33,36 +33,30 @@
 		<%@ include file="../include/nav.jsp" %>
 			<main class="col-md-10 ms-sm-auto">
 				<div class="container-fluid breack " >
-					 
+					<form action="/fullCal/calendarWrite" method="POST">
                     <div class="row ">
                     	<div class="col-2"></div>
                         <div class="col " style=" border: 2px solid rgb(161, 161, 161); border-radius: 30px">
                         	<div style="padding: 10px">
                             <h3 class="text-center fw-bold breack"> 일정 추가</h3>
                       		
-                            <h5 class="breack">사유</h5>
-                            <input class="form-control" type="text" placeholder="사유" >
-                            <h5 class="breack">유형</h5>
-                            <select class="form-select" >
-                                <option selected>휴가</option>
-                                <option value="1">반차</option>
-                                <option value="2">연차</option>
-                                <option value="3">파견</option>
-                            </select>
-                            <h5 class="breack">시작</h5>
-                            <input class="form-control" type="date"  >
-                            <h5 class="breack">끝</h5>
-                            <input class="form-control" type="date"  >
+                            <h5 class="breack">제목</h5>
+                            <input class="form-control" type="text" name="title" placeholder="사유">
                             <h5 class="breack">내용</h5>
-                            <input class="form-control" type="text" placeholder="내용" >
+                            <input class="form-control" type="text" name="content" placeholder="내용" > 
+                            <h5 class="breack">시작</h5>
+                            <input class="form-control" type="date" name="calstart">
+                            <h5 class="breack">끝</h5>
+                            <input class="form-control" type="date" name="calend">
                             
                             <button type="button" class="btn btn-secondary breack" data-bs-dismiss="modal">취소</button>
-                            <button type="button" class="btn btn-primary breack">일정 등록</button>
+                            <button type="submit" class="btn btn-primary breack">일정 등록</button>
                             <div class="breack"></div>
                             </div>
                         </div>
                         <div class="col-2"></div>
                     </div>
+                    </form>
                    </div>
             		
 			</main>
