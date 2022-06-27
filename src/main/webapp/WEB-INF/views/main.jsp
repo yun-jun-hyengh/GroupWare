@@ -56,11 +56,11 @@
                   </div>
                   <c:if test="${member != null}">
                   <div class="mb-3 row profile_name">
-                    <label for="staticEmail" class="col-sm-5 col-form-label">이름</label>
+                    <label for="staticEmail" class="col-sm-5 col-form-label fw-bold">이름</label>
                     <div class="col-sm-8">
                       <input type="text" readonly class="form-control-plaintext" id="name" value="${member.name}">
                     </div>
-                    <label for="staticEmail" class="col-sm-5 col-form-label">직책</label>
+                    <label for="staticEmail" class="col-sm-5 col-form-label fw-bold">직책</label>
                     <div class="col-sm-8">
                       <input type="text" readonly class="form-control-plaintext" id="posit" value="${member.posit}">
                     </div>
@@ -77,7 +77,15 @@
 	                       
 	                          	퇴근
 	                          	<input class="form-control" type="time" name="endTime" id="endTime">
+<<<<<<< Updated upstream
 	                          	<input type="submit" value="상태저장">
+=======
+<<<<<<< HEAD
+	                          	<input type="submit" class="btn btn-secondary breack" value="상태저장">
+=======
+	                          	<input type="submit" value="상태저장">
+>>>>>>> e311d27ce1c1c5918dffe11071eec93da029024a
+>>>>>>> Stashed changes
 	                          	</form>
 	                   	</div>
 	                  
@@ -146,6 +154,12 @@
             </div>
             <div class="row " style="margin-top: 20px;">
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+              
+=======
+>>>>>>> Stashed changes
               <!--  <div class="col-2">
                 <div class="profile"  style="height: 300px">
                    <div class="col">
@@ -161,6 +175,10 @@
                    </div>
                 </div>
               </div> -->
+<<<<<<< Updated upstream
+=======
+>>>>>>> e311d27ce1c1c5918dffe11071eec93da029024a
+>>>>>>> Stashed changes
 
    			  <div class="col profile_freeboard ">
 

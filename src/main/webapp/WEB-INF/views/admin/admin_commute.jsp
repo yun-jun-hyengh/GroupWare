@@ -53,7 +53,15 @@
           </div>
           <div class="row">
         	<div class="col-12">
+<<<<<<< Updated upstream
         		<input type="submit" class="btn btn-info" value="Excel">
+=======
+<<<<<<< HEAD
+        		<input type="submit" class="btn btn-info float-end breack" style="color: #fff" value="Excel" >
+=======
+        		<input type="submit" class="btn btn-info" value="Excel">
+>>>>>>> e311d27ce1c1c5918dffe11071eec93da029024a
+>>>>>>> Stashed changes
         	</div>
     	</div>
 		</form>
