@@ -8,7 +8,7 @@
 	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 		initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-		height: '700px',
+		height: '600px',
 		headerToolbar : { // 헤더에 표시할 툴 바
 			start : 'prev next today',
 			center : 'title',

@@ -34,8 +34,8 @@
         <%@ include file="include/nav.jsp" %>
 
         <main class="col-md-10 ms-sm-auto">
-          <div class="container-fluid">
-            <div class="col-md-3 col-lg-2 d-md-block bg-light " style="float: left;" >
+          <div class="container-fluid breack">
+            <div class="col-md-3 col-lg-2 d-md-block bg-light " style="height:100%; float: left;" >
 
               <div class="col-sm3">
                 <div class="profile">
@@ -64,7 +64,7 @@
                   
                    
 	                  <div class="col">
-	                  	<form action="/getToWork" method="POST">
+	                  	<form action="/getToWork" method="POST" style="padding: 10px">
 	                  			<input type="hidden" name="memberId" id="memberId" value="${member.memberId}" >
 	                  			<input type="hidden" name="name" id="name" value="${member.name}" >
 	                       		<h5 > 출퇴근 관리</h5>
@@ -78,7 +78,7 @@
 	                          	<input type="submit" class="btn btn-secondary breack" value="상태저장">
 
 
-	                          	</form>
+	                      </form>
 	                   	</div>
 	                  
                   </c:if>
@@ -87,102 +87,105 @@
 
               
             </div>
-             <div class="container-fluid">
-				<div class="col-8">
-					<div class="row profile_freeboard">
-              <div class=" col table-responsive">
-              <h4> 전자메일 게시판</h4>
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th class="col-1">번호</th>
-                      <th class="col-4">제목</th>
-                      <th class="col-2">작성자</th>
-                      <th class="col-3">날짜</th>
-                      <th class="col-2">조회수</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                   <tr>
-                      <td>1,001</td>
-                      <td>random</td>
-                      <td>data</td>
-                      <td>placeholder</td>
-                      <td>text</td>
-                    </tr>
-                  </tbody>
-                  
-                  
-                </table>
-              </div>
-
-            </div>
-
-            <div class="row profile_freeboard">
-              <div class=" col table-responsive">
-              <h4> 공지사항게시판 </h4>
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th class="col-1">번호</th>
-                      <th class="col-4">제목</th>
-                      <th class="col-2">작성자</th>
-                      <th class="col-3">날짜</th>
-                      <th class="col-2">조회수</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <c:forEach var="list" items="${list}">
-                    <tr>
-                      <td>${list.bno}</td>
-                      <td>${list.title}</td>
-                      <td>${list.writer}</td>
-                      <td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
-                      <td>${list.cnt}</td>
-                    </tr>
-                   </c:forEach>
-                   
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-            <div class="row profile_freeboard ">
-
-
-      <div id='calendar'></div>
-
-
-
-            </div>
-
-            <div class="row profile_freeboard">
-              <div class=" col table-responsive">
-              <h4> 자유게시판 </h4>
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th class="col-1">번호</th>
-                      <th class="col-4">제목</th>
-                      <th class="col-2">작성자</th>
-                      <th class="col-3">날짜</th>
-                      <th class="col-2">조회수</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1,001</td>
-                      <td>random</td>
-                      <td>data</td>
-                      <td>placeholder</td>
-                      <td>text</td>
-                    </tr>
-                   
-                  </tbody>
-                </table>
-              </div>
             
-          </div>				
+          </div>
+    		 <div class="container-fluid breack">
+				<div class="row gy-3">
+					<div class=" col-6 col-sm-5  profile_freeboard "  style="height: 600px">
+		              <div class="table-responsive">
+		              <h4> 전자메일 게시판</h4>
+		                <table class="table table-striped table-sm">
+		                  <thead>
+		                    <tr>
+		                      <th class="col-1">번호</th>
+		                      <th class="col-4">제목</th>
+		                      <th class="col-2">작성자</th>
+		                      <th class="col-3">날짜</th>
+		                      <th class="col-2">조회수</th>
+		                    </tr>
+		                  </thead>
+		                  <tbody>
+		                   <tr>
+		                      <td>1,001</td>
+		                      <td>random</td>
+		                      <td>data</td>
+		                      <td>placeholder</td>
+		                      <td>text</td>
+		                    </tr>
+		                  </tbody>
+		                  
+		                  
+		                </table>
+		              </div>
+		
+		            </div>
+
+			            <div class=" col-6 col-sm-5 profile_freeboard">
+			              <div class="table-responsive">
+			              <h4> 공지사항게시판 </h4>
+			                <table class="table table-striped table-sm">
+			                  <thead>
+			                    <tr>
+			                      <th class="col-1">번호</th>
+			                      <th class="col-4">제목</th>
+			                      <th class="col-2">작성자</th>
+			                      <th class="col-3">날짜</th>
+			                      <th class="col-2">조회수</th>
+			                    </tr>
+			                  </thead>
+			                  <tbody>
+			                    <c:forEach var="list" items="${list}">
+			                    <tr>
+			                      <td>${list.bno}</td>
+			                      <td>${list.title}</td>
+			                      <td>${list.writer}</td>
+			                      <td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
+			                      <td>${list.cnt}</td>
+			                    </tr>
+			                   </c:forEach>
+			                   
+			                  </tbody>
+			                </table>
+			              </div>
+			
+			            </div>
+			                <div class="w-100 d-none d-md-block"></div>
+			            <div class="col-6 col-sm-5 profile_freeboard " style="padding: 10px">
+			
+			
+			     			 <div id='calendar'></div>
+			
+			
+			
+			            </div>
+			
+			            <div class=" col-6 col-sm-5 profile_freeboard">
+			              <div class=" table-responsive">
+			              <h4> 자유게시판 </h4>
+			                <table class="table table-striped table-sm">
+			                  <thead>
+			                    <tr>
+			                      <th class="col-1">번호</th>
+			                      <th class="col-4">제목</th>
+			                      <th class="col-2">작성자</th>
+			                      <th class="col-3">날짜</th>
+			                      <th class="col-2">조회수</th>
+			                    </tr>
+			                  </thead>
+			                  <tbody>
+			                    <tr>
+			                      <td>1,001</td>
+			                      <td>random</td>
+			                      <td>data</td>
+			                      <td>placeholder</td>
+			                      <td>text</td>
+			                    </tr>
+			                   
+			                  </tbody>
+			                </table>
+			              </div>
+            		
+        		  </div>				
 				
 				</div>          	
           
@@ -191,9 +194,7 @@
          
             
         	</div>
-          </div>
-    
-          
+          	<div class="breack"></div>
         </main>
       </div>
     </div>
