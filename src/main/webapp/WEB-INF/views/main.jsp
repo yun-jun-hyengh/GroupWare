@@ -77,15 +77,11 @@
 	                       
 	                          	퇴근
 	                          	<input class="form-control" type="time" name="endTime" id="endTime">
-<<<<<<< Updated upstream
-	                          	<input type="submit" value="상태저장">
-=======
-<<<<<<< HEAD
+
+
 	                          	<input type="submit" class="btn btn-secondary breack" value="상태저장">
-=======
-	                          	<input type="submit" value="상태저장">
->>>>>>> e311d27ce1c1c5918dffe11071eec93da029024a
->>>>>>> Stashed changes
+
+
 	                          	</form>
 	                   	</div>
 	                  
@@ -154,31 +150,6 @@
             </div>
             <div class="row " style="margin-top: 20px;">
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-              
-=======
->>>>>>> Stashed changes
-              <!--  <div class="col-2">
-                <div class="profile"  style="height: 300px">
-                   <div class="col">
-                       <h5 > 출퇴근 관리</h5>
-                       
-                          출근
-                           <input class="form-control" type="text" name="workTime" id="intime" readonly="readonly">
-                       
-                          퇴근
-                          <input class="form-control" type="text" name="endTime" readonly id="outtime">
-                   	   </form> 
-                   	   
-                   </div>
-                </div>
-              </div> -->
-<<<<<<< Updated upstream
-=======
->>>>>>> e311d27ce1c1c5918dffe11071eec93da029024a
->>>>>>> Stashed changes
 
    			  <div class="col profile_freeboard ">
 
