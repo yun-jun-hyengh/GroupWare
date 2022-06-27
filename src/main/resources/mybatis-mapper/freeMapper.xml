@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.groupware.mapper.AnonymousMapper">
+<mapper namespace="com.team.groupware.mapper.FreeMapper">
 	
-	<insert id="write" parameterType="com.team.groupware.domain.Anonymousboard" useGeneratedKeys="true" keyProperty="bno">
+	<insert id="write" parameterType="com.team.groupware.domain.Freeboard" useGeneratedKeys="true" keyProperty="bno">
 		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
-			SELECT ANONYMOUSBOARD_SEQ.NEXTVAL FROM DUAL
+			SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO ANONYMOUSBOARD(BNO, TITLE, CONTENT)
-		VALUES(#{bno}, #{title}, #{content})
+		INSERT INTO FREEBOARD(BNO, TITLE, WRITER, CONTENT)
+		VALUES(#{bno}, #{title}, #{writer}, #{content})
 	</insert>
 	
-	<select id="list" resultType="com.team.groupware.domain.Anonymousboard" parameterType="com.team.groupware.domain.SearchCriteria">
+	<select id="list" resultType="com.team.groupware.domain.Freeboard" parameterType="com.team.groupware.domain.SearchCriteria">
 		SELECT  BNO, 
 		        TITLE, 
 		        WRITER,
@@ -24,7 +24,7 @@
 		               REGDATE, 
 		               CNT, 
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
-		         FROM ANONYMOUSBOARD
+		         FROM FREEBOARD
 		         WHERE 1=1
 		         	<include refid="search"></include>
 		                       ) MP
@@ -34,41 +34,41 @@
 	
 	<select id="listCount" resultType="int">
 		<![CDATA[
-			SELECT COUNT(BNO) FROM ANONYMOUSBOARD WHERE BNO > 0
+			SELECT COUNT(BNO) FROM FREEBOARD WHERE BNO > 0
 		]]>
 	</select>
 	
-	<select id="read" resultType="com.team.groupware.domain.Anonymousboard">
+	<select id="read" resultType="com.team.groupware.domain.Freeboard">
 		SELECT BNO, TITLE, REGDATE, WRITER, CNT, CONTENT
-		FROM ANONYMOUSBOARD WHERE BNO = #{bno} 
+		FROM FREEBOARD WHERE BNO = #{bno} 
 	</select>
 	
-<!--	<delete id="delete">
-		DELETE FROM ANONYMOUSBOARD WHERE BNO = #{bno}
+	<delete id="delete">
+		DELETE FROM FREEBOARD WHERE BNO = #{bno}
 	</delete>
 	
-	<update id="update" parameterType="com.team.groupware.domain.Anonymousboard">
-		UPDATE ANONYMOUSBOARD 
+	<update id="update" parameterType="com.team.groupware.domain.Freeboard">
+		UPDATE FREEBOARD 
 		SET TITLE = #{title}, 
 			CONTENT = #{content} 
 		WHERE BNO = #{bno}
 	</update>
-  -->	
+	
 	<update id="viewCount">
-		UPDATE ANONYMOUSBOARD
+		UPDATE FREEBOARD
 		SET CNT = CNT + 1
 		WHERE BNO = #{bno}
 	</update>
 	
 	<insert id="insertFile" parameterType="hashMap">
-		INSERT INTO ANONYMOUS_MP_FILE(
+		INSERT INTO MP_FILE(
 			FILE_NO,
 			BNO,
 			ORG_FILE_NAME,
 			STORED_FILE_NAME,
 			FILE_SIZE
 		) VALUES(
-			SEQ_ANONYMOUS_MP_FILE_NO.NEXTVAL,
+			SEQ_MP_FILE_NO.NEXTVAL,
 			#{BNO},
 			#{ORG_FILE_NAME},
 			#{STORED_FILE_NAME},
@@ -82,19 +82,19 @@
 			   ORG_FILE_NAME,
 			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
 			   DEL_GB
-		FROM ANONYMOUS_MP_FILE
+		FROM MP_FILE
 		WHERE BNO = #{bno}
 		AND DEL_GB = 'N'
 		ORDER BY FILE_NO ASC
 	</select>
 	
-	<!-- 파일수정
+	<!-- 파일수정 -->
 	<update id="updateFile" parameterType="hashMap">
 		UPDATE MP_FILE SET
 		DEL_GB = 'Y'
 		WHERE FILE_NO = #{FILE_NO}
 	</update>
-	-->
+	
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
@@ -104,9 +104,9 @@
 	</sql>
 	
 	<!-- 최신글 5개 -->
-	<select id="newlist" resultType="com.team.groupware.domain.Anonymousboard">
+	<select id="newlist" resultType="com.team.groupware.domain.Freeboard">
 		<![CDATA[
-			SELECT * FROM ANONYMOUSBOARD WHERE ROWNUM <= 5 ORDER BY REGDATE DESC
+			SELECT * FROM FREEBOARD WHERE ROWNUM <= 5 ORDER BY REGDATE DESC
 		]]>
 	</select>
 	

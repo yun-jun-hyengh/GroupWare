@@ -27,8 +27,8 @@
                 <div class="collapse" id="home-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="/goji/gojilist" class="link-dark rounded">공지 게시판</a></li>
-                    <li><a href="../board/freeboard.html" class="link-dark rounded">자유 게시판</a></li>
-                    <li><a href="../board/anonymousbulletinboard.html" class="link-dark rounded">익명 게시판</a></li>
+                    <li><a href="/free/freelist" class="link-dark rounded">자유 게시판</a></li>
+                    <li><a href="/anonymous/anonymouslist" class="link-dark rounded">익명 게시판</a></li>
                   </ul>
                 </div>
               </li>
