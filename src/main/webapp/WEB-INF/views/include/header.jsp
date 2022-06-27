@@ -48,7 +48,7 @@
           aria-labelledby="dropdownUser1"
         >
           <li><a class="dropdown-item" href="/member/profile">내정보</a></li>
-          <li><a class="dropdown-item" href="#">근태관리</a></li>
+          <li><a class="dropdown-item" href="/member/commute">근태관리</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" type="button" id="logoutBtn">로그아웃</a></li>
         </ul>

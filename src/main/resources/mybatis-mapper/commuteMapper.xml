@@ -13,4 +13,9 @@
 		SELECT MEMBERID, NAME, WORKTIME, ENDTIME, REGDATE
 		FROM COMMUTE ORDER BY WORKID DESC
 	</select>
+	
+	<!-- 개인 출퇴근 내역조회 -->
+	<select id="mycommute" resultType="com.team.groupware.domain.CommuteVO">
+		SELECT * FROM COMMUTE WHERE MEMBERID = #{memberId} ORDER BY WORKID DESC
+	</select>
 </mapper>

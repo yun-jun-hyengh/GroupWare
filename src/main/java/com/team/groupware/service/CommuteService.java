@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team.groupware.domain.CommuteVO;
+import com.team.groupware.domain.MemberVO;
 
 public interface CommuteService {
 	// 출근
@@ -15,4 +16,7 @@ public interface CommuteService {
 	
 	// 엑셀 다운로드 
 	public void excelDown(CommuteVO vo, HttpServletResponse response) throws Exception;
+	
+	// 개인 근태내역 조회 
+	public List<CommuteVO> mycommute() throws Exception;
 }

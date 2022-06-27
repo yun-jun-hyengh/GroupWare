@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.groupware.domain.MemberVO;
+import com.team.groupware.service.CommuteService;
 import com.team.groupware.service.GojiService;
 import com.team.groupware.service.UserService;
 
@@ -43,6 +44,9 @@ public class HomeController {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
+	
+	@Autowired
+	private CommuteService commute;
 	
 	@GetMapping("/")
 	public String index() {
@@ -202,6 +206,15 @@ public class HomeController {
 		vo.setPwd(pass);
 		service.pwUpdate_M(vo);
 		return "redirect:/";
+	}
+	
+	// 개인 근태내역 조회 
+	@GetMapping("/member/commute")
+	public String commute(Model model, HttpSession session) throws Exception {
+		MemberVO login = (MemberVO) session.getAttribute("member");
+		model.addAttribute("list", commute.mycommute());
+		model.addAttribute("member", login);
+		return "member/commute";
 	}
 
 }
