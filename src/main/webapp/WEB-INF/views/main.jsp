@@ -28,6 +28,7 @@
         }
     </style>
     
+    
         
 </head>
 <body>
@@ -64,10 +65,22 @@
                       <input type="text" readonly class="form-control-plaintext" id="posit" value="${member.posit}">
                     </div>
                   </div>
-                   <div class="row justify-content-around profile_button " style="padding-bottom: 20px">
-                    <input class="btn btn-outline-secondary col-4 " id="goin" type="button" value="출근" onclick="btnActive1()">
-                    <input class="btn btn-outline-secondary col-4 "  id="leave" type="button" value="퇴근" onclick="btnActive2()" disabled>
-                  </div>
+                  
+                   
+	                  <div class="col">
+	                  	<form action="/getToWork" method="POST">
+	                  			<input type="hidden" name="memberId" id="memberId" value="${member.memberId}" >
+	                  			<input type="hidden" name="name" id="name" value="${member.name}" >
+	                       		<h5 > 출퇴근 관리</h5>
+	                          	출근
+	                           	<input class="form-control" type="time" name="workTime" id="workTime">
+	                       
+	                          	퇴근
+	                          	<input class="form-control" type="time" name="endTime" id="endTime">
+	                          	<input type="submit" value="상태저장">
+	                          	</form>
+	                   	</div>
+	                  
                   </c:if>
                 </div>
               </div>
@@ -133,21 +146,21 @@
             </div>
             <div class="row " style="margin-top: 20px;">
 
-              <div class="col-2">
+              <!--  <div class="col-2">
                 <div class="profile"  style="height: 300px">
                    <div class="col">
                        <h5 > 출퇴근 관리</h5>
-                       <form action="" >
+                       
                           출근
-                           <input class="form-control" type="text" value="출근시간" readonly id="intime">
-                        </form>
-                        <form action="">
+                           <input class="form-control" type="text" name="workTime" id="intime" readonly="readonly">
+                       
                           퇴근
-                          <input class="form-control" type="text" value="퇴근시간" readonly id="outtime">
-                   </form>
+                          <input class="form-control" type="text" name="endTime" readonly id="outtime">
+                   	   </form> 
+                   	   
                    </div>
                 </div>
-              </div>
+              </div> -->
 
    			  <div class="col profile_freeboard ">
 
@@ -208,27 +221,7 @@
         </main>
       </div>
     </div>
-    <script type="text/javascript">
-
-    function btnActive1()  {
-         document.getElementById('goin').click;
-         if(goin.disabled == false){
-            goin.disabled = true;
-            leave.disabled = false;
-           
-           }
-         
-       }
-
-       function btnActive2()  {
-       document.getElementById('leave').click;
-         if(leave.disabled == false){
-            leave.disabled = true;
-            goin.disabled = false;
-           
-         }
-       }
-       </script>
+    
 	<script type="text/javascript">
         var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
         var date = new Date();//today의 Date를 세어주는 역할
@@ -318,21 +311,42 @@
 <script language="javascript" type="text/javascript">
     buildCalendar();//
 </script>
-    
-	<script>
-        var chi = document.getElementById("merong");
-        var chet = chi.getContext("2d");
-        chet.beginPath();
-        chet.strokeStyle="#f00";
-        chet.lineWidth=20;
-        chet.arc(130,150,100,0,(1.6)*Math.PI,false);
-        chet.stroke();
+    <script type="text/javascript">
 
-    </script>
+    function btnActive()  {
+         document.getElementById('goin').click;
+         if(goin.disabled == false){
+            goin.disabled = true;
+            leave.disabled = false;
+            var s =new Date(); //현재 시간
+            var e= document.getElementById('intime');
+            e.value=s.toLocaleTimeString();
+               
+           }
+         
+       }
+
+       function btnActive2()  {
+       document.getElementById('leave').click;
+         if(leave.disabled == false){
+            leave.disabled = true;
+            goin.disabled = false;
+         
+         	var s =new Date(); //현재 시간
+         	var e= document.getElementById('outtime');
+         	e.value=s.toLocaleTimeString();
+            
+         }
+         
+       }
+       </script>
+       
+	
     <script
       src="https://getbootstrap.kr/docs/5.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    
 </body>
 </html>
