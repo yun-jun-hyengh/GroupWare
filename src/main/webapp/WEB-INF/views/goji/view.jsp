@@ -71,7 +71,7 @@ crossorigin="anonymous"
 												</font>
 	                                        </p>
 	                           				<c:forEach var="file" items="${file}">
-	                                			<img src="/img/${file.ORG_FILE_NAME}"><br>
+	                                			<img src="/img/${file.STORED_FILE_NAME}"><br>
 	                                			
 	                                		</c:forEach> 
 	                                		
