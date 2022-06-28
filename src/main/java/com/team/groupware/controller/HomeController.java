@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.groupware.domain.CommuteVO;
 import com.team.groupware.domain.MemberVO;
 import com.team.groupware.service.CommuteService;
+import com.team.groupware.service.FreeService;
 import com.team.groupware.service.GojiService;
 import com.team.groupware.service.UserService;
 
@@ -50,14 +51,18 @@ public class HomeController {
 	@Autowired
 	private CommuteService commute;
 	
+	@Autowired
+	private FreeService frservice;
+	
 	@GetMapping("/")
 	public String index() {
 		return "index";
 	}
 	
 	@GetMapping("/main")
-	public String main(Model model) throws Exception {
+	public String main(Model model, Model model1) throws Exception {
 		model.addAttribute("list", goji.newlist());
+		model1.addAttribute("frlist", frservice.freenewlist());
 		return "main";
 	}
 	

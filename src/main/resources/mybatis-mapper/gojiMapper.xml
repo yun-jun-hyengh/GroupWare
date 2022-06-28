@@ -106,7 +106,7 @@
 	<!-- 최신글 5개 -->
 	<select id="newlist" resultType="com.team.groupware.domain.GojiBoard">
 		<![CDATA[
-			SELECT * FROM GOJIBOARD WHERE ROWNUM <= 5 ORDER BY REGDATE DESC
+			SELECT * FROM GOJIBOARD WHERE ROWNUM <= 5 ORDER BY BNO DESC
 		]]>
 	</select>
 	

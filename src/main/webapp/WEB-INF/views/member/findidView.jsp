@@ -28,7 +28,7 @@
 						</div>
 						<form action="/member/find_Id" method="post">
 							<div class="form-group">
-								<label for="email">아이디</label> <input type="email"
+								<label for="email">본인이메일</label> <input type="email"
 									name="email" class="form-control" id="email"
 									placeholder="Enter Email Address..." />
 							</div>

@@ -25,5 +25,5 @@ public void write(Freeboard vo, MultipartHttpServletRequest mpRequest) throws Ex
 	
 	public List<Map<String, Object>> selectFileList(int bno) throws Exception;
 	
-	public List<Freeboard> newlist() throws Exception;
+	public List<Freeboard> freenewlist() throws Exception;
 }

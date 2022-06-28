@@ -77,7 +77,7 @@
 							<thead>
 								<tr>
 									<td><span style='float: right'>
-											<button type="submit" id="list_btn" class="btn btn-default">목록</button>
+											<button type="button" onclick="history.go(-1)" class="btn btn-default">목록</button>
 											
 									</span></td>
 								</tr>
@@ -104,6 +104,10 @@
 		$("#FILE_NO").attr("value", fileNo);
 		formObj.attr("action", "/message/fileDown");
 		formObj.submit();
+	}
+	
+	function click(){
+		location.href = '/message/relist';
 	}
 </script>
 </body>

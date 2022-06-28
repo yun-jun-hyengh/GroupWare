@@ -172,16 +172,19 @@
 			                      <th class="col-2">조회수</th>
 			                    </tr>
 			                  </thead>
+			                  
 			                  <tbody>
-			                    <tr>
-			                      <td>1,001</td>
-			                      <td>random</td>
-			                      <td>data</td>
-			                      <td>placeholder</td>
-			                      <td>text</td>
-			                    </tr>
-			                   
+			                  	<c:forEach var="frlist" items="${frlist}">
+				                    <tr>
+				                      <td>${frlist.bno}</td>
+				                      <td>${frlist.title}</td>
+				                      <td>${frlist.writer}</td>
+				                      <td><fmt:formatDate value="${frlist.regdate}" pattern="yyyy-MM-dd"/></td>
+				                      <td>${frlist.cnt}</td>
+				                    </tr>
+			                    </c:forEach>
 			                  </tbody>
+			                 
 			                </table>
 			              </div>
             		

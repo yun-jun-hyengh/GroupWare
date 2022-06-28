@@ -104,9 +104,9 @@
 	</sql>
 	
 	<!-- 최신글 5개 -->
-	<select id="newlist" resultType="com.team.groupware.domain.Freeboard">
+	<select id="freenewlist" resultType="com.team.groupware.domain.Freeboard">
 		<![CDATA[
-			SELECT * FROM FREEBOARD WHERE ROWNUM <= 5 ORDER BY REGDATE DESC
+			SELECT * FROM FREEBOARD WHERE ROWNUM <= 5 ORDER BY BNO DESC
 		]]>
 	</select>
 	

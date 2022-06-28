@@ -85,7 +85,7 @@ public class FreeServiceImpl implements FreeService{
 	}
 
 	@Override
-	public List<Freeboard> newlist() throws Exception {
-		return dao.newlist();
+	public List<Freeboard> freenewlist() throws Exception {
+		return dao.freenewlist();
 	}
 }
