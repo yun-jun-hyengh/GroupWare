@@ -9,7 +9,7 @@
       class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
     >
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main"
-        >점프하는 껍데기</a
+        >(주)점프하는 껍데기</a
       >
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
@@ -49,6 +49,7 @@
         >
           <li><a class="dropdown-item" href="/member/profile">내정보</a></li>
           <li><a class="dropdown-item" href="/member/commute">근태관리</a></li>
+          <li><a class="dropdown-item" href="/member/rule">회사규칙</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" type="button" id="logoutBtn">로그아웃</a></li>
         </ul>
