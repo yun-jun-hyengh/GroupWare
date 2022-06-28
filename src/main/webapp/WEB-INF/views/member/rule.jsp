@@ -23,7 +23,7 @@
         <table class="table">
 		  <thead>
 		    <tr>
-		      <th scope="col"><h2 class="fw-bold breack"> 회사 규칙</h2></th>
+		      <th scope="col"><h2 class="fw-bold "> 회사 규칙</h2></th>
 		    </tr>
 		  </thead>
 		  </table>
