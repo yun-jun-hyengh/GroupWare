@@ -20,7 +20,14 @@
       <div class="row">
         <%@ include file="../include/nav.jsp" %>
         <main class="col-md-10 ms-sm-auto breack">
-			<div class="accordion" id="accordionExample">
+        <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col"><h2 class="fw-bold breack"> 회사 규칙</h2></th>
+		    </tr>
+		  </thead>
+		  </table>
+			<div class="accordion breack" id="accordionExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingOne">
 			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" >
