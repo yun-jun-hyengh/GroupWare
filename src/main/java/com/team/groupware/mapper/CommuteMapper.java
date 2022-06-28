@@ -16,5 +16,5 @@ public interface CommuteMapper {
 	public List<CommuteVO> staffcommute() throws Exception;
 	
 	// 개인 근태내역 조회 
-	public List<CommuteVO> mycommute() throws Exception;
+	public List<CommuteVO> mycommute(String memberId) throws Exception;
 }

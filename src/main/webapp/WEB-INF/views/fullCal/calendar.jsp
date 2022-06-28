@@ -37,7 +37,7 @@
 				<div class="container-fluid breack" >
 					<div id='calendar'></div>
 					
-					<button type="button" class="btn btn-secondary breack float-end" > <a href="" style=" color: #fff">일정 등록</a> </button>
+					<button type="button" class="btn btn-secondary breack float-end" > <a href="/fullCal/calendarWrite" style=" color: #fff">일정 등록</a> </button>
 				</div>
 			</main>
 		</div>
@@ -80,12 +80,16 @@
 					start : '<%=vo.getCalstart()%>',
 					end : '<%=vo.getCalend()%>',
 					color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+					
 				},
 			<%}
 		}%>
+		
 			]
+		
 	});
 	calendar.render();
+	
 });
 </script>
 </html>

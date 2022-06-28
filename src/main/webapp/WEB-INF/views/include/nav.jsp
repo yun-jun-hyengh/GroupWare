@@ -73,12 +73,12 @@
                   data-bs-target="#calendar-collapse"
                   aria-expanded="false"
                 >
-                  캘린더
+                  일정관리
                 </button>
                 <div class="collapse" id="calendar-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/fullCal/calendar" class="link-dark rounded">전체 일정</a></li>
-                    <li><a href="/fullCal/calendarWrite" class="link-dark rounded">일정등록</a></li>
+                    <li><a href="/fullCal/calendar" class="link-dark rounded">캘린더</a></li>
+                    <li><a href="/fullCal/list" class="link-dark rounded">일정목록</a></li>
                   </ul>
                 </div>
               </li>

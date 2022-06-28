@@ -18,5 +18,5 @@ public interface CommuteService {
 	public void excelDown(CommuteVO vo, HttpServletResponse response) throws Exception;
 	
 	// 개인 근태내역 조회 
-	public List<CommuteVO> mycommute() throws Exception;
+	public List<CommuteVO> mycommute(String memberId) throws Exception;
 }

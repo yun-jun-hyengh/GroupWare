@@ -15,7 +15,7 @@
 	</select>
 	
 	<!-- 개인 출퇴근 내역조회 -->
-	<select id="mycommute" resultType="com.team.groupware.domain.CommuteVO">
+	<select id="mycommute" resultType="com.team.groupware.domain.CommuteVO" parameterType="String">
 		SELECT * FROM COMMUTE WHERE MEMBERID = #{memberId} ORDER BY WORKID DESC
 	</select>
 </mapper>

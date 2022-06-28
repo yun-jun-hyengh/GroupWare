@@ -10,4 +10,7 @@
 	<select id="calendarList" resultType="com.team.groupware.domain.CalendarVO">
 		SELECT * FROM CALENDAR
 	</select>
+	
+	
+	
 </mapper>

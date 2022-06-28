@@ -109,8 +109,8 @@ public class CommuteServiceImpl implements CommuteService {
 	}
 
 	@Override
-	public List<CommuteVO> mycommute() throws Exception {
-		return mapper.mycommute();
+	public List<CommuteVO> mycommute(String memberId) throws Exception {
+		return mapper.mycommute(memberId);
 	}
 
 }

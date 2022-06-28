@@ -39,6 +39,7 @@
                 </tr>
               </thead>
               <tbody>
+              
               <c:forEach items="${list}" var="list">
               
               <tr>
@@ -49,6 +50,7 @@
               	  <td>${list.regdate}</td>
               </tr>
               </c:forEach>
+             
               </tbody>
             </table>
           </div>

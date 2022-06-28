@@ -1,6 +1,7 @@
 package com.team.groupware.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team.groupware.domain.CommuteVO;
 import com.team.groupware.domain.MemberVO;
 import com.team.groupware.service.CommuteService;
 import com.team.groupware.service.GojiService;
@@ -210,10 +212,13 @@ public class HomeController {
 	
 	// 개인 근태내역 조회 
 	@GetMapping("/member/commute")
-	public String commute(Model model, HttpSession session) throws Exception {
+	public String commute(Model model, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
 		MemberVO login = (MemberVO) session.getAttribute("member");
-		model.addAttribute("list", commute.mycommute());
-		model.addAttribute("member", login);
+		String memberid = login.getMemberId();
+		
+		List<CommuteVO> list = commute.mycommute(memberid);
+		model.addAttribute("list", list);
 		return "member/commute";
 	}
 
