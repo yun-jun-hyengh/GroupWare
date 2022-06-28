@@ -87,7 +87,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/member/**")
 				.addPathPatterns("/message/**")
 				.addPathPatterns("/message/**")
-				.addPathPatterns("/work/**");
+				.addPathPatterns("/work/**")
+				.addPathPatterns("/fullCal/**");
 	}
 	
 }
