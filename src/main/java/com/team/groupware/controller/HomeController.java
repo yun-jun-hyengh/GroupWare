@@ -222,4 +222,9 @@ public class HomeController {
 		return "member/commute";
 	}
 
+	@GetMapping("/member/rule")
+	public void findRule() {
+		
+	}
+		
 }

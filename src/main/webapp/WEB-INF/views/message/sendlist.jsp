@@ -28,7 +28,7 @@
           <form id="frm" method="POST">
           <div class="table-responsive">
           <span style="float: right">
-          	<a type="button" href="/message/writer">편지쓰기</a>
+          	<a type="button" href="/message/writer" class="btn  btn-outline-primary">편지쓰기</a>
           </span>
             <table class="table table-striped table-sm">
               <thead>
