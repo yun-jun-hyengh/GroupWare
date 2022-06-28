@@ -27,6 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.team.groupware.interceptor.AdminInterceptor;
 import com.team.groupware.interceptor.AnnonymousInterceptor;
 import com.team.groupware.interceptor.GojiInterceptor;
+import com.team.groupware.interceptor.LoginInterceptor;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -39,6 +40,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	private AnnonymousInterceptor annonymousInterceptor;
+	
+	@Autowired
+	private LoginInterceptor logininterceptor;
 	
 	@Bean
 	public ViewResolver internalResourceViewResolver() {
@@ -75,6 +79,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/goji/updateView");
 		registry.addInterceptor(annonymousInterceptor)
 				.addPathPatterns("/anonymous/view");
+		registry.addInterceptor(logininterceptor)
+				.addPathPatterns("/main")
+				.addPathPatterns("/goji/**")
+				.addPathPatterns("/anonymous/**")
+				.addPathPatterns("/free/**")
+				.addPathPatterns("/member/**")
+				.addPathPatterns("/message/**")
+				.addPathPatterns("/message/**")
+				.addPathPatterns("/work/**");
 	}
 	
 }
