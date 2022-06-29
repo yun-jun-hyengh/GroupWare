@@ -2,9 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.groupware.mapper.WorkMapper">
-	<insert id="write">
+	<insert id="write" parameterType="com.team.groupware.domain.WorkVO" useGeneratedKeys="true" keyProperty="bno">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT WORKER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO WORKER(BNO, BGNO, TITLE, WRITER, CONTENT, DEPT)
-		VALUES(WORKER_SEQ.NEXTVAL, #{bgno}, #{title}, #{writer}, #{content}, #{dept})
+		VALUES(#{bno}, #{bgno}, #{title}, #{writer}, #{content}, #{dept})
 	</insert>
 	
 	<select id="worklist" resultType="com.team.groupware.domain.WorkVO" parameterType="com.team.groupware.domain.SearchCriteria">
@@ -65,4 +68,41 @@
 			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (WRITER LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
+	
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO WORKER_FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		) VALUES(
+			SEQ_WORKER_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+	</insert>
+	
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT FILE_NO,
+			   ORG_FILE_NAME,
+			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
+			   DEL_GB
+		FROM WORKER_FILE
+		WHERE BNO = #{BNO} 
+		AND DEL_GB = 'N'
+		ORDER BY FILE_NO ASC
+	</select>
+	
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT STORED_FILE_NAME, ORG_FILE_NAME 
+		FROM WORKER_FILE WHERE FILE_NO = #{FILE_NO}
+	</select>
+	
+	<update id="updateFile" parameterType="hashMap">
+		UPDATE WORKER_FILE SET DEL_GB = 'Y'
+		WHERE FILE_NO = #{FILE_NO}
+	</update>
 </mapper>

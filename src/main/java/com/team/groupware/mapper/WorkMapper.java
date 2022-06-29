@@ -1,6 +1,7 @@
 package com.team.groupware.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,4 +16,8 @@ public interface WorkMapper {
 	public WorkVO read(int bno) throws Exception;
 	public void delete(int bno) throws Exception;
 	public void update(WorkVO vo) throws Exception;
+	public void insertFile(Map<String, Object> map) throws Exception;
+	public List<Map<String, Object>> selectFileList(int bno) throws Exception;
+	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
+	public void updateFile(Map<String, Object> map) throws Exception;
 }

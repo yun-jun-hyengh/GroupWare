@@ -21,6 +21,7 @@ crossorigin="anonymous"
         	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 			<main class="col-md-10 ms-sm-auto row">
 				<form class="col d-block" method="POST" enctype="multipart/form-data">
+					
 					<div class="row ms-sm-auto">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
@@ -45,11 +46,11 @@ crossorigin="anonymous"
                            </tr>
                            <tr>
                               <td class="align-middle text-center">보고자</td>
-                              <td><input type="text"  class="form-control" name="writer"></td>
+                              <td><input type="text"  class="form-control" name="writer" value="${member.name}"></td>
                            </tr>  
                            <tr>
                               <td class="align-middle text-center">부서</td>
-                              <td><input type="text"  class="form-control" name="dept"></td>
+                              <td><input type="text"  class="form-control" name="dept" value="${member.dept}"></td>
                            </tr>                 
                            <tr>
                               <td class="align-middle text-center">글내용</td>
@@ -57,15 +58,22 @@ crossorigin="anonymous"
                            </tr>
                            <tr>
                               <td class="align-middle text-center">파일업로드</td>
-                              <td><input type="file" class="form-control" name="file"></td>
+                              <td><button class="fileAdd_btn" type="button" onclick="fn_addFile()">파일추가</button></td>
+                             
                            </tr>
-                           <tr>
-                              <td colspan="2"  class="text-center">
-                                 <input type="submit" value="글쓰기" class="btn " style="background-color:rgb(210,244,234) ;">
-                                 <input type="reset" value="다시작성" class="btn" style="background-color:rgb(210,244,234) ;" > 
-                              </td>
-                           </tr>
-                        </table>
+							<tr>
+								<td>
+									<td id="fileIndex"></td>
+								</td>
+							</tr>
+								<tr>
+									<td colspan="2" class="text-center"><input type="submit"
+										value="글쓰기" class="btn " 
+										style="background-color: rgb(210, 244, 234);"> <input
+										type="reset" value="다시작성" class="btn"
+										style="background-color: rgb(210, 244, 234);"></td>
+								</tr>
+							</table>
                         <%-- 업데이트 --%>
 						</div>
 					</div>
@@ -79,4 +87,17 @@ crossorigin="anonymous"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script> <!-- 꼭 포함하세요 -->
+<script type="text/javascript">
+	function fn_addFile(){
+		var fileIndex = 1;
+		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+		$(".fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click","#fileDelBtn", function(){
+			$(this).parent().remove();
+			
+		});
+	}
+</script>
 </html>

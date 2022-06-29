@@ -21,7 +21,7 @@ crossorigin="anonymous"
     	<div class="row">
         	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 			<main class="col-md-10 ms-sm-auto row">
-				<form class="col d-block" method="POST" action="/goji/update">
+				<form class="col d-block" method="POST" action="/goji/update" name="updateForm" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly">
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
   					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
@@ -51,14 +51,31 @@ crossorigin="anonymous"
 										<td class="align-middle text-center">작성일</td>
 										<td><fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd"/></td>
 									</tr>
-									<tr>
+									<!--  <tr>
 										<td class="align-middle text-center">파일업로드</td>
 										<td><input type="file" class="form-control" name="file" multiple="multiple"></td>
+									</tr> -->
+									<tr>
+										<td class="align-middle text-center">파일업로드</td>
+										<td id="fileIndex" class="align-middle text-center">
+											<c:forEach var="file" items="${file}" varStatus="var">
+												
+													<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
+													<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
+													<a href="#" id="fileName" onclick="return false;">${file.STORED_FILE_NAME}</a>(${file.FILE_SIZE}kb)
+													
+													<button id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" type="button">삭제</button><br>
+													
+												
+											</c:forEach>
+										</td>
 									</tr>
+									
 									<tr>
 										<td colspan="2"  class="text-center">
 											<input type="submit" value="수정" class="btn " style="background-color:rgb(210,244,234) ;">
 											<input type="submit" value="취소" class="btn" id="cancel_btn" style="background-color:rgb(210,244,234) ;" > 
+											<button type="button" id="fileAdd_btn" class="btn" style="background-color:rgb(210,244,234) ;">파일추가</button>
 										</td>
 									</tr>
 								</table>
@@ -77,6 +94,13 @@ crossorigin="anonymous"
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var formObj = $("form[name='updateForm']");
+		$(document).on("click", "#fileDel", function(){
+			$(this).parent().remove();
+		})
+		
+		fn_addFile();
+		
 		$("#cancel_btn").on("click", function(){
 			event.preventDefault();
 			location.href = "/goji/gojilist?bno=${update.bno}"
@@ -86,5 +110,34 @@ crossorigin="anonymous"
 					+"&keyword=${scri.keyword}";
 		})
 	})
+	
+	function fn_valiChk(){
+		var updateForm = $("form[name='updateForm'] .chk").length;
+		for(var i = 0; i<updateForm; i++){
+			if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
+				alert($(".chk").eq(i).attr("title"));
+				return true;
+			}
+		}
+	}
+	
+	function fn_addFile(){
+		var fileIndex = 1;
+		$("#fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click", "#fileDelBtn", function(){
+			$(this).parent().remove();
+		});
+	}
+	
+	var fileNoArry = new Array();
+	var fileNameArry = new Array();
+	function fn_del(value, name){
+		fileNoArry.push(value);
+		fileNameArry.push(name);
+		$("#fileNoDel").attr("value", fileNoArry);
+		$("#fileNameDel").attr("value", fileNameArry);
+	}
 </script>
 </html>

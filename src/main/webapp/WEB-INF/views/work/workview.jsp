@@ -23,7 +23,7 @@ crossorigin="anonymous"
         	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
         	
         	<main class="col-md-10 ms-sm-auto">
-        	<form class="col d-block" role="form" method="post" autocomplete="off">
+        	<form class="col d-block" role="form" method="post" autocomplete="off" name="readForm">
                 	<input type="hidden" id="bno" name="bno" value="${read.bno}">
                 	<input type="hidden" id="bgno" name="bgno" value="${scri.bgno}">
 					<input type="hidden" id="page" name="page" value="${scri.page}">
@@ -33,6 +33,7 @@ crossorigin="anonymous"
 						id="searchType" name="searchType" value="${scri.searchType}">
 					<input type="hidden" id="keyword" name="keyword"
 						value="${scri.keyword}">
+					<input type="hidden" id="FILE_NO" name="FILE_NO" value="">
             </form>
             <div class="container-fluid">
                 <table class="table">
@@ -82,7 +83,11 @@ crossorigin="anonymous"
                     </tr>
                     <tr>
                         <td class="table-active align-middle text-center">첨부파일</td>
-                        <td><input class="form-control" type="file" name="" id=""></td>
+                        <td>
+                        	<c:forEach var="file" items="${file}">
+                        		<a href="#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)<br>
+                        	</c:forEach>
+                        </td>
                        
                     </tr>
                     <!--  <tr>
@@ -137,4 +142,10 @@ crossorigin="anonymous"
 			formObj.submit();
 		})
 	})
+	function fn_fileDown(fileNo){
+		var formObj = $("form[name='readForm']");
+		$("#FILE_NO").attr("value", fileNo);
+		formObj.attr("action", "/work/fileDown");
+		formObj.submit();
+	}
 </script>
